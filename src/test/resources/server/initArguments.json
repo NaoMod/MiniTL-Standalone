@@ -1,0 +1,13 @@
+{
+    "sourceFile": "file.extension",
+    "additionalArgs": {
+        "a": 1,
+        "b": "B",
+        "c": true,
+        "d": [1, 2, 3],
+        "e": {
+            "e1": true,
+            "e2": 1
+        }
+    }
+}

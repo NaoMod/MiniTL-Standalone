@@ -1,0 +1,7 @@
+{
+    "id": "a",
+    "name": "A",
+    "targetElementTypeId": "b",
+    "description": "descr",
+    "isDefault": true
+}

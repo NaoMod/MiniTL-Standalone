@@ -1,17 +1,29 @@
 package org.tetrabox.example.server.lrp;
 
-import java.util.List;
+import java.util.Map;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.tetrabox.example.minitl.Transformation;
 
-@JsonDeserialize(using = ModelElementDeserializer.class)
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 public class ModelElement {
     private String id;
     private String type;
-    private List<Entry<Either<ModelElement, List<ModelElement>>>> children;
-    private List<Entry<Either<String, List<String>>>> refs;
-    private List<Entry<Either<Object, List<Object>>>> attributes;
+    private Map<String, Either<ModelElement, ModelElement[]>> children;
+    private Map<String, Either<String, String[]>> refs;
+    private Map<String, Either<Object, Object[]>> attributes;
+
+    @JsonInclude(Include.NON_NULL)
     private Location location;
+
+    public ModelElement() {
+        super();
+    }
+
+    public ModelElement(Transformation transformation) {
+        
+    }
 
     public String getId() {
         return id;
@@ -29,27 +41,27 @@ public class ModelElement {
         this.type = type;
     }
 
-    public List<Entry<Either<ModelElement, List<ModelElement>>>> getChildren() {
+    public Map<String, Either<ModelElement, ModelElement[]>> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Entry<Either<ModelElement, List<ModelElement>>>> children) {
+    public void setChildren(Map<String, Either<ModelElement, ModelElement[]>> children) {
         this.children = children;
     }
 
-    public List<Entry<Either<String, List<String>>>> getRefs() {
+    public Map<String, Either<String, String[]>> getRefs() {
         return refs;
     }
 
-    public void setRefs(List<Entry<Either<String, List<String>>>> refs) {
+    public void setRefs(Map<String, Either<String, String[]>> refs) {
         this.refs = refs;
     }
 
-    public List<Entry<Either<Object, List<Object>>>> getAttributes() {
+    public Map<String, Either<Object, Object[]>> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(List<Entry<Either<Object, List<Object>>>> attributes) {
+    public void setAttributes(Map<String, Either<Object, Object[]>> attributes) {
         this.attributes = attributes;
     }
 
@@ -60,5 +72,4 @@ public class ModelElement {
     public void setLocation(Location location) {
         this.location = location;
     }
-
 }
